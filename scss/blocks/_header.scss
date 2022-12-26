@@ -1,0 +1,88 @@
+
+.header-content{
+    padding: 27px 0;
+    @include flex(center, space-between);
+    &__start{
+        @include flex(center, $cGap: 20);
+    }
+    &__end{
+        @include flex(center);
+    }
+    &__tel{
+        margin-right: 24px;
+        @include font(18,600,22,none,$main-black);
+    }
+    &__v-mode{
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        @include flex(center, center);
+        background-color: #F5F5F5;
+        margin-right: 16px;
+        cursor: pointer;
+    }
+    &__login-btn{
+        @include flex(center, $cGap: 8);
+        @include font(18,500,22,none,$main-white);
+        padding: 18px 30px;
+        border-radius: 100px;
+        background-color: $main-green;
+    }
+}
+
+.header-content__link-list{
+    display: flex;
+    column-gap: 10px;
+}
+
+.header-content__link-item{
+    position: relative;
+    &:hover .header-content__link{
+        background-color: grey;
+    }
+    &:hover .header-content__link::after{
+        transform: translateY(15%)  rotate(180deg);
+    }
+}
+
+.header-content__link{
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    @include font(18,500,22,none,$main-black);
+    transition: linear .2s;
+    cursor: pointer;
+    border-radius: 100px;
+}
+
+.header-content__link.dark{
+    color: $main-white;
+}
+
+.header-content__link-item:not(:first-child) .header-content__link::after{
+    content: url(../assets/icons/Icon.svg);
+    transition: .3s linear;
+}
+
+
+ul.header-content__dropdown-list{
+    position: absolute;
+    top: 56px;
+    left: 0;
+    padding: 32px 28px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    display: none;
+}
+
+.header-content__link-item:hover > .header-content__dropdown-list{
+    @include flex($fDirection: column, $rGap: 18);
+}
+
+.header-content__link-item:nth-child(3):hover > .header-content__dropdown-list{
+    width: max-content;
+    transform: translateX(10px);
+}
